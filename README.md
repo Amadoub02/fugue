@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
 
+## Branch Naming Convention
+We will be naming ever branch as a feature or bugfix
+```
+feature/ticket-number
+bugfix/ticker-number
+```
+
+Make sure your code compiles(nothing is breaken) before you open a pr.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
