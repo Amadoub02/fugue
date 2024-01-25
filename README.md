@@ -10,6 +10,8 @@ bugfix/ticker-number
 ```
 
 Make sure your code compiles(nothing is breaken) before you open a pr.
+Side note: `Have another team member approve the pull request`
+
 
 ## Development server
 
