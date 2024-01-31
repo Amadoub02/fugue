@@ -6,6 +6,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrl: './editor.component.css'
 })
 export class EditorComponent {
+  userString: string = 'reckless: ';
   consoleContent: string = '';
   editorContent: string = '';
 
@@ -15,7 +16,7 @@ export class EditorComponent {
     if(event instanceof KeyboardEvent) {
       if(event.key === 'Enter'){
         const commandLineValue = (event.target as HTMLInputElement).value;
-        this.appendContent(commandLineValue);
+        this.appendContent(this.userString + commandLineValue);
 
         (event.target as HTMLInputElement).value = '';
       }
@@ -32,7 +33,7 @@ export class EditorComponent {
     const editorContent = this.editor.nativeElement.value;
 
     if(editorContent.trim() !== ''){
-      this.appendContent(editorContent);
+      this.appendContent(this.userString + editorContent);
       this.editor.nativeElement.value = '';
     }
   }
