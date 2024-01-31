@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-editor',
-  standalone: true,
-  imports: [],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
 export class EditorComponent {
   consoleContent: string = '';
   editorContent: string = '';
+
+  @ViewChild('editor') editor: ElementRef;
 
   onKeydown(event:Event):void {
     if(event instanceof KeyboardEvent) {
@@ -27,12 +26,14 @@ export class EditorComponent {
     this.consoleContent += content + '<br>';
   }
 
-  onEditorInput(): void {
-    // Just so we can get the textbox
-  }
+  onEditorInput() {}
 
   runCode(): void{
-    this.consoleContent += this.editorContent + '<br>';
-    this.editorContent = '';
+    const editorContent = this.editor.nativeElement.value;
+
+    if(editorContent.trim() !== ''){
+      this.appendContent(editorContent);
+      this.editor.nativeElement.value = '';
+    }
   }
 }

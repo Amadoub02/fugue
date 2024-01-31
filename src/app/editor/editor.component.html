@@ -2,7 +2,7 @@
     <h1>Text Editor</h1>
     <div id="container1">
         <div id="editor-container">
-            <textarea [(ngModel)]="editorContent" (input)="onEditorInput()"></textarea>
+            <textarea #editor (input)="onEditorInput()"></textarea>
         </div>
         <div><button (click)="runCode()">Save</button></div>
     </div>
