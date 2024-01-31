@@ -227,6 +227,15 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
+      <nav>
+        <ul>
+          <li><a routerLink="/editor-component" routerLinkActive="active" ariaCurrentWhenActive="page">Text Editor Component</a></li>
+          <!-- <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li> -->
+        </ul>
+      </nav>
+      <router-outlet></router-outlet>
+      <p>Line</p>
+      <p>line 2</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
