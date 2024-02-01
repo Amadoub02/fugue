@@ -1,0 +1,19 @@
+<body>
+    <h1>Text Editor</h1>
+    <div id="container1">
+        <div id="editor-container">
+            <textarea #editor (input)="onEditorInput()"></textarea>
+        </div>
+        <div><button (click)="runCode()">Save</button></div>
+    </div>
+    <h1>Console</h1>
+    <div id="container2">
+      <div id="console">
+        <p id="console_content" [innerHTML]="consoleContent"></p>
+      </div>
+      <div>
+        <input id="commandline" type="text" placeholder="Command line" (keydown.enter)="onKeydown($event)">
+      </div>
+      <div></div>
+    </div>
+</body>
