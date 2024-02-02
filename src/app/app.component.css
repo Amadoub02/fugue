@@ -18,7 +18,7 @@ header {
 }
 inner-header {
     position: absolute;
-    background-image: url(images/tiger.jpg);
+    background-image: url(../images/tiger.jpg);
     width: 400px;
     height: 400px;
 }
