@@ -10,7 +10,7 @@ export class EditorComponent {
   consoleContent: string = '';
   editorContent: string = '';
 
-  @ViewChild('editor') editor: ElementRef;
+  @ViewChild('editor') editor!: ElementRef;
 
   onKeydown(event:Event):void {
     if(event instanceof KeyboardEvent) {
