@@ -3,7 +3,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrl: './editor.component.css'
+  styleUrls: ['./editor.component.css']
 })
 export class EditorComponent {
   userString: string = 'reckless: ';
@@ -15,6 +15,7 @@ export class EditorComponent {
   onKeydown(event:Event):void {
     if(event instanceof KeyboardEvent) {
       if(event.key === 'Enter'){
+        console.log('Keydown event triggered');
         const commandLineValue = (event.target as HTMLInputElement).value;
         this.appendContent(this.userString + commandLineValue);
 
@@ -27,9 +28,12 @@ export class EditorComponent {
     this.consoleContent += content + '<br>';
   }
 
-  onEditorInput() {}
+  onEditorInput() {
+    console.log('Editor input event triggered');
+  }
 
   runCode(): void{
+    console.log(this.editor);
     const editorContent = this.editor.nativeElement.value;
 
     if(editorContent.trim() !== ''){
