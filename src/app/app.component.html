@@ -1,36 +1,12 @@
 <!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <body>
     <header>
-        <div class= "inner-header">
-        </div>
-        
+        <div class= "inner-header"></div> 
         <div class="header-text">
-            <span class="word">Text Editor</span>
-            <span class="word">Fugue</span>
-            <span class="word">Java</span>
-            <span class="word">C</span>
+          <span class="word"><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></span>
+          <span class="word"><a routerLink="/editor-component" routerLinkActive="active" ariaCurrentWhenActive="page">Text Editor</a></span>
         </div>
         <h1>Your Website</h1>
     </header>
-<div class="half-page-image">
-        <img src="images/fugue-favicon-black.png"  class="full-width">
-    </div>
-
-    <section>
-       
-    </section>
-
-    <footer>
-        <p>.</p>
-    </footer>
-
+    <router-outlet></router-outlet>
 </body>
-</html>

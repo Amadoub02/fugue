@@ -1,0 +1,75 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: red;
+}
+
+header {
+    background-color: red;
+    padding: 20px;
+    text-align: left; /* Align text to the left */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; /* Add relative positioning to the header */
+}
+inner-header {
+    position: absolute;
+    background-image: url(images/tiger.jpg);
+    width: 400px;
+    height: 400px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.header-text {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.word {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    margin-right: 50px;
+}
+
+.word:hover {
+    background-color: darkred;
+    position: relative; /* Add relative positioning to the word */
+    z-index: 1; /* Bring the word to the front to cover the space */
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.half-page-image {
+    text-align: center;
+    overflow: hidden;
+    position: relative; /* Ensure relative positioning for the half-page image */
+    z-index: 0; /* Set a lower z-index to appear behind the header */
+    width: 50%; /* Set width to cover the left half of the page */
+    float: left; /* Float left to allow other content to flow around it */
+}
+
+.logo {
+    height: 400px;
+    width:400px;
+}
