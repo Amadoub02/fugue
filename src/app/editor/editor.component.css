@@ -7,6 +7,10 @@ body {
     height: 100vh;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 #editor-container {
     display: flex;
     flex: 1;
@@ -34,12 +38,19 @@ body {
     flex: 1;
     padding: 10px;
     overflow: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+#console-content {
+    margin: 0;
+    padding: 0;
 }
 
 #debugger {
     flex: 1;
     padding: 10px;
     overflow: auto;
+    border-top: 1px solid #ccc;
 }
 
 textarea {
@@ -78,4 +89,37 @@ footer {
     padding: 10px;
     background-color: #333;
     color: white;
+}
+
+.horizontal-container {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.horizontal-container p {
+    margin: 0;
+    line-height: 1;
+}
+
+#text-editor-name {
+    margin-left: 10px;
+}
+
+#username {
+    /* margin-right: 10px; */
+    display: inline-block;
+}
+
+#commandline-content {
+    display: inline-block;
+    flex: 1;
+}
+
+#commandline {
+    border: none;
+    outline: none;
+    display: inline-block;
+    width: 100%;
 }

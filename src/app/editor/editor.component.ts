@@ -41,4 +41,13 @@ export class EditorComponent {
       this.editor.nativeElement.value = '';
     }
   }
+
+  toggleConsole() {
+    setTimeout(()=> {
+      const input = document.getElementById("commandline");
+      if(input) {
+        input.focus();
+      }
+    });
+  }
 }

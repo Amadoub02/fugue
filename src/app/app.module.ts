@@ -6,13 +6,10 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
-    AppComponent, 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgModel,
   ],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

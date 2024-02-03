@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { EditorComponent } from './editor/editor.component';
 
 @Component({
   selector: 'app-root',
@@ -12,3 +13,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'fugue';
 }
+
+@NgModule({
+  declarations: [
+      EditorComponent,
+  ],
+  imports: [
+    CommonModule,
+  ],
+})
+export class AppModule { }
