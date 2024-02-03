@@ -1,19 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #editor-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #code-editor {
+            flex: 1;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #console-debugger {
+            flex: 1;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #console {
+            flex: 1;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        #debugger {
+            flex: 1;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: calc(100% - 20px); /* Adjust for padding */
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #run-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        #reset-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-    <h1>Text Editor</h1>
-    <div id="container1">
-        <div id="editor-container">
+
+    <div id="editor-container">
+        <div id="code-editor">
             <textarea #editor (input)="onEditorInput()"></textarea>
+            <div>
+                <button (click)="runCode()" id="run-button">Run</button>
+                <button id="reset-button">Reset</button>
+            </div>
         </div>
-        <div><button (click)="runCode()">Save</button></div>
+
+        <div id="console-debugger">
+            <div id="console">
+                <!-- Placeholder for console content -->
+                Console Output
+            </div>
+            <div id="debugger">
+                <!-- Placeholder for debugger content -->
+                Debugger Output
+            </div>
+        </div>
     </div>
-    <h1>Console</h1>
-    <div id="container2">
-      <div id="console">
-        <p id="console_content" [innerHTML]="consoleContent"></p>
-      </div>
-      <div>
-        <input id="commandline" type="text" placeholder="Command line" (keydown.enter)="onKeydown($event)">
-      </div>
-      <div></div>
-    </div>
+
+    <footer>
+        <p>© Fugue. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Your JavaScript code goes here
+    </script>
+
 </body>
+</html>
+
