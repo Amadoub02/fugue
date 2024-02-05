@@ -12,7 +12,9 @@
             <textarea #editor (input)="onEditorInput()"></textarea>
             <div>
                 <button (click)="runCode()" id="run-button">Run</button>
-                <button id="reset-button">Reset</button>
+                <button (click)="resetTextEditor()" id="reset-button">Reset</button>
+                <!--For testing purpose only-->
+                <button (click)="runJava()" id="java-button">FOR TESTING ONLY: Run Java</button>
             </div>
         </div>
         <div id="console-debugger">

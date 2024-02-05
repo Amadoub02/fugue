@@ -84,6 +84,12 @@ button {
     border: none;
 }
 
+#java-button {
+    background-color: darkgray;
+    color: white;
+    border: none;
+}
+
 footer {
     text-align: center;
     padding: 10px;
@@ -108,7 +114,7 @@ footer {
 }
 
 #username {
-    /* margin-right: 10px; */
+    margin-right: 2px;
     display: inline-block;
 }
 
