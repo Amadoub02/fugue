@@ -18,6 +18,7 @@ header {
 }
 inner-header {
     position: absolute;
+    background-image: url(../images/tiger.jpg);
     width: 400px;
     height: 400px;
 }
@@ -26,17 +27,11 @@ h1 {
     margin: 0;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-}
-
 .header-text {
     display: flex;
     flex-grow: 1;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 10%;
 }
 
 .word {
