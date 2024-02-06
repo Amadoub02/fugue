@@ -52,29 +52,3 @@ a {
     z-index: 1; /* Bring the word to the front to cover the space */
 }
 
-section {
-    padding: 20px;
-    text-align: center;
-}
-
-footer {
-    background-color: red;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-.half-page-image {
-    text-align: center;
-    overflow: hidden;
-    position: relative; /* Ensure relative positioning for the half-page image */
-    z-index: 0; /* Set a lower z-index to appear behind the header */
-    width: 50%; /* Set width to cover the left half of the page */
-    float: left; /* Float left to allow other content to flow around it */
-}
-
-.logo {
-    height: 400px;
-    width:400px;
-}
