@@ -1,4 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { JavaService } from './java.service';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
   selector: 'app-editor',
@@ -9,6 +12,9 @@ export class EditorComponent {
   userString: string = 'reckless: ';
   consoleContent: string = '';
   editorContent: string = '';
+
+  /* For java test only */
+  constructor(private http: HttpClient, private javaService: JavaService) {}
 
   /* Allows us to watch text editor field */
   @ViewChild('editor') editor!: ElementRef;
@@ -62,7 +68,17 @@ export class EditorComponent {
   }
 
   /* FOR TESTING ONLY: runs java at endpoint for testing only */
-  runJava() {
+  async runJava() {
+    const editorContent = this.editor.nativeElement.value;
 
+    if (editorContent.trim() !== '') {
+      try {
+        const response: any = await this.javaService.runJavaCode(editorContent).toPromise();
+        console.log('Response:', response);
+        this.appendContent(this.userString + response);
+      } catch (error) {
+        console.error('Error executing Java code:', error);
+      }
+    }
   }
 }
