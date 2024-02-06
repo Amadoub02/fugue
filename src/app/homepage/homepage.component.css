@@ -1,0 +1,27 @@
+h1 {
+    margin: 0;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.half-page-image {
+    text-align: center;
+    overflow: hidden;
+    position: relative; /* Ensure relative positioning for the half-page image */
+    z-index: 0; /* Set a lower z-index to appear behind the header */
+    width: 50%; /* Set width to cover the left half of the page */
+    float: left; /* Float left to allow other content to flow around it */
+}

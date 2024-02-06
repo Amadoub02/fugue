@@ -12,6 +12,7 @@ import { EditorComponent } from './editor/editor.component';
 })
 export class AppComponent {
   title = 'fugue';
+  imagePath: any;
 }
 
 @NgModule({
