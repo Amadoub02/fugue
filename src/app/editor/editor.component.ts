@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { FugueRuntimeService } from '../fugue-runtime.service';
 
 @Component({
   selector: 'app-editor',
@@ -23,6 +24,8 @@ export class EditorComponent {
       }
     }
   }
+  
+  constructor(private fugue: FugueRuntimeService) { }
 
   private appendContent(content: string): void {
     this.consoleContent += content + '<br>';
@@ -37,10 +40,19 @@ export class EditorComponent {
     const editorContent = this.editor.nativeElement.value;
 
     if(editorContent.trim() !== ''){
-      this.appendContent(this.userString + editorContent);
-      this.editor.nativeElement.value = '';
+      const [ok, instructions, output] = this.fugue.loadProgram(editorContent);
+      if (ok) {
+        console.log("Loaded program");
+        console.log(instructions);
+        console.log(output);
+        this.appendContent(output);
+      } else {
+        throw new Error('TODO: error information');
+      }
+      
     }
   }
+  
 
   toggleConsole() {
     setTimeout(()=> {
