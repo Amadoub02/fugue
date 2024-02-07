@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { FugueRuntimeService } from '../fugue-runtime.service';
 import { HttpClient } from '@angular/common/http';
 import { JavaService } from './java.service';
 import { SharedModule } from '../shared/shared.module';
@@ -32,6 +33,8 @@ export class EditorComponent {
       }
     }
   }
+  
+  constructor(private fugue: FugueRuntimeService) { }
 
   private appendContent(content: string): void {
     this.consoleContent += content + '<br>';
@@ -49,9 +52,18 @@ export class EditorComponent {
 
     /* As of right now, just to no overload the console */
     if(editorContent.trim() !== ''){
-      this.appendContent(this.userString + editorContent);
+      const [ok, instructions, output] = this.fugue.loadProgram(editorContent);
+      if (ok) {
+        console.log("Loaded program");
+        console.log(instructions);
+        console.log(output);
+        this.appendContent(this.userString + output);
+      } else {
+        throw new Error('TODO: error information');
+      }
     }
   }
+  
 
   /* Allows users to click anywhere on console to focus typing */
   toggleConsole() {
