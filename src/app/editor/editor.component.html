@@ -9,9 +9,9 @@
     <div id="editor-container">
         <div id="code-editor">
             <h2 id="text-editor-name">Text Editor</h2>
-            <textarea #editor (input)="onEditorInput()"></textarea>
+            <textarea #editor (keydown)="onKeydownTab($event)" class="editor"></textarea>
             <div>
-                <button (click)="runCode()" id="run-button">Run</button>
+                <button (click)="run()" id="run-button">Run</button>
                 <button (click)="resetTextEditor()" id="reset-button">Reset</button>
                 <!--For testing purpose only-->
                 <button (click)="runJava()" id="java-button">FOR TESTING ONLY: Run Java</button>
