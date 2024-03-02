@@ -1,0 +1,193 @@
+body {
+    display: grid;
+    place-items: center;
+    gap: 50px;
+    margin: 0;
+    height: 100vh;
+    padding: 0 32px;
+    background: #2d373c;
+    /*font-family: "Poppins";*/
+}
+
+@media (width >= 500px){
+    body { 
+        padding:0;
+    }
+    .card {
+        margin: 0;
+        width: 360px;
+    }
+}
+
+.background {
+    position: fixed;
+    top: -50vmin;
+    left: -50vmin;
+    width: 100vmin;
+    height: 100vmin;
+    border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+    background: #65c8ff;
+    transition: .7s ease all;
+}
+
+.background-left {
+    top: -50vmin;
+    left: -50vmin;
+}
+
+.background-right {
+    content: "";
+    top: -50vmin;
+    left: 100vmin;
+
+}
+
+.background::after {
+    content: "";
+    position: inherit;
+    right: -50vmin;
+    bottom: -55vmin;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: #143d81;
+    transition: .7s ease all;
+}
+
+.background-left::after {
+    content: "";
+    right: -50vmin;
+    bottom: -55vmin;
+}
+
+.background-right::after {
+    content: "";
+    bottom: -55vmin;
+    right: 100vmin;
+}
+
+.card {
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    width: 94%;
+    margin: 0 20px;
+    padding: 170px 30px 54px;
+    border-radius: 24px;
+    background: #2d373c;
+    text-align: center;
+    box-shadow: 0 100px 100px rgb(0 0 0/10%);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -880px;
+    left: 50%;
+    translate: -50% 0;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    background: #5f96f0;
+}
+
+.card .logo {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    translate: -50% 0;
+    width: 64px;
+    height: 64px;
+}
+
+.card > h2 {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0 0 38px;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.login-container {
+    margin: 0 0 44px;
+    display: grid;
+    gap: 12px;
+}
+
+.login-container:is(input,button){
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.login-container > input {
+    border: 0;
+    padding: 0 24px;
+    color: #222222;
+    background: #ededed;
+}
+
+.login-container > input::placeholder{
+    color: rgb(0 0 0 / 28%);
+}
+
+.login-container > button {
+    border: 0;
+    color: #f9f9f9;
+    background-color: #226ce7;
+    display: grid;
+    place-items: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-container > button {
+    border: 0;
+    color: #f9f9f9;
+    background: #226ce7;
+    display: grid;
+    place-items: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.card > footer {
+    color: #a1a1a1;
+}
+
+.card > footer > a {
+    color: #216ce7;
+}
+
+.switchButton[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    background-color: #f1f1f1;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.switchButton[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    background-color: #303030;
+    border-radius: 20px;
+    transform: scale(1.1);
+    transition: .7s ease all;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.switchButton:checked[type="checkbox"]::before {
+    background-color:  darkgray;
+    left: 82px;
+}
+
+.switch-button-container {
+    padding-top: 10px;
+}

@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -15,11 +21,6 @@ header {
     justify-content: space-between;
     position: relative; /* Add relative positioning to the header */
 }
-inner-header {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-}
 
 h1 {
     margin: 0;
@@ -29,6 +30,17 @@ a {
     color: white;
     text-decoration: none;
 }
+
+/*
+.inner-header {
+    /*position: absolute;*
+    display: flex;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+}
+*/
 
 .header-text {
     display: flex;

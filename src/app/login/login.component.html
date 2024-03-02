@@ -1,0 +1,21 @@
+<body>
+    <div class="background" [ngClass]="backgroundClass"></div>
+    <div class="card">
+        <img class="logo" src="../../images/fugue-favicon-black.png" alt="Fugue logo" />
+        <h2>{{ formTitle }}</h2>
+        <form class="login-container" *ngIf="isLoginFormVisible" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm, 'login')">
+            <input type="email" placeholder="Username"/>
+            <input type="password" placeholder="Password"/>
+            <button class='btn btn-outline-info' type="submit" value="Login">Sign In</button>
+        </form>
+        <form class="login-container" *ngIf="!isLoginFormVisible" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm, 'signup')">
+            <input type="email" placeholder="Username"/>
+            <input type="password" placeholder="Password"/>
+            <button class='btn btn-outline-info' type="submit" value="Login">Sign up</button>
+        </form>
+        <footer>
+            <div><span>{{ toggleButtonText }}</span></div>
+            <div class="switch-button-container"><input class="switchButton" (click)="toggleForm()" type="checkbox" /></div>
+        </footer>
+    </div>
+</body>

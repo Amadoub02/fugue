@@ -36,6 +36,7 @@ export class EditorComponent {
     }
   }
 
+  /* Prevents Tab from switching focus and appends the space to textarea */
   onKeydownTab(event:Event):void {
     if(event instanceof KeyboardEvent) {
       if(event.key === 'Tab') {
@@ -101,24 +102,46 @@ export class EditorComponent {
 
   private handleCommand(command: string){
     const commandArgs = command.split(' ');
-    if(commandArgs.length > 1){
+    if(commandArgs.length > 2){
       this.appendContent('Too many arguments >:(');
       return;
     }
     const cmd = commandArgs[0];
     switch(cmd) {
       case '':
+        if(commandArgs.length > 1) {
+          this.appendContent('Too many arguments >:(');
+          break;
+        }
         this.toggleConsole();
         break;
       case 'help':
+        if(commandArgs.length > 1) {
+          this.appendContent('Too many arguments >:(');
+          break;
+        }
         this.showHelp();
         break;
       case 'clear':
+        if(commandArgs.length > 1) {
+          this.appendContent('Too many arguments >:(');
+          break;
+        }
         this.clearConsole();
         break;
       case 'run':
+        if(commandArgs.length > 1) {
+          this.appendContent('Too many arguments >:(');
+          break;
+        }
         this.appendContent('Running Fugue...');
         this.runCode();
+        break;
+      case 'save':
+        const savedElements = this.editor.nativeElement.value;
+        if(savedElements.trim() !== '') {
+          const response = '';
+        }
         break;
       default:
         this.appendContent('Unknown command: ' + command);
