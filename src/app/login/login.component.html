@@ -3,12 +3,12 @@
     <div class="card">
         <img class="logo" src="../../images/fugue-favicon-black.png" alt="Fugue logo" />
         <h2>{{ formTitle }}</h2>
-        <form class="login-container" *ngIf="isLoginFormVisible" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <form class="login-container" *ngIf="isLoginFormVisible" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm, 'login')">
             <input type="email" placeholder="Username"/>
             <input type="password" placeholder="Password"/>
             <button class='btn btn-outline-info' type="submit" value="Login">Sign In</button>
         </form>
-        <form class="login-container" *ngIf="!isLoginFormVisible" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <form class="login-container" *ngIf="!isLoginFormVisible" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm, 'signup')">
             <input type="email" placeholder="Username"/>
             <input type="password" placeholder="Password"/>
             <button class='btn btn-outline-info' type="submit" value="Login">Sign up</button>
