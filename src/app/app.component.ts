@@ -34,6 +34,7 @@ export class AppComponent {
   ],
   imports: [
     FormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [EditorComponent]
