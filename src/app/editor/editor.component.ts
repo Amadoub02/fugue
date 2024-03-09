@@ -68,17 +68,15 @@ export class EditorComponent {
 
   /* Runs the code from Text Editor on console */
   runCode(): void{
-    console.log(this.editor);
     const editorContent = this.editor.nativeElement.value;
 
     /* As of right now, just to no overload the console */
     if(editorContent.trim() !== ''){
-      const [ok, instructions, output] = this.fugue.loadProgram(editorContent);
+      const [ok, state] = this.fugue.loadProgram(editorContent);
       if (ok) {
         console.log("Loaded program");
-        console.log(instructions);
-        console.log(output);
-        this.appendContent(output);
+        console.log(state);
+        // this.appendContent(state.output);
       } else {
         throw new Error('TODO: error information');
       }
