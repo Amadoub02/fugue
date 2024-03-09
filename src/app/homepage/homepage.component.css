@@ -3,8 +3,17 @@ h1 {
 }
 
 section {
+    background-color:black;
     padding: 20px;
+    padding-top:250px;
     text-align: center;
+    height:100%;
+    padding-bottom: 550px; /* Add bottom padding */
+}
+.description{
+    color:white;
+    background-color:black;
+    font-family: monospace
 }
 
 footer {
@@ -18,10 +27,14 @@ footer {
 }
 
 .half-page-image {
+    background-color: black;
     text-align: center;
     overflow: hidden;
     position: relative; /* Ensure relative positioning for the half-page image */
     z-index: 0; /* Set a lower z-index to appear behind the header */
     width: 50%; /* Set width to cover the left half of the page */
     float: left; /* Float left to allow other content to flow around it */
+}
+html{
+    background-color:black;
 }

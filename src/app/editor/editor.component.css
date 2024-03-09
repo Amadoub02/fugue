@@ -128,4 +128,22 @@ footer {
     outline: none;
     display: inline-block;
     width: 100%;
+    color:white;
+    background-color:black;
+}
+body{
+    background-color:black;
+}
+h2{
+    color:white;
+    background-color:black;
+    font-family:monospace;
+}
+textarea{
+    background-color:black;
+    color:white;
+}
+p{
+    color: white;
+    font-family:monospace
 }
