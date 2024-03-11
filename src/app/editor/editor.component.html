@@ -9,7 +9,7 @@
     <div id="editor-container">
         <div id="code-editor">
             <h2 id="text-editor-name">Text Editor</h2>
-            <textarea #editor (keydown)="onKeydownTab($event)" class="editor"></textarea>
+            <textarea #editor (keydown)="onKeydownTab($event)" (input)="updateSource()" class="editor"></textarea>
             <div>
                 <button (click)="run()" id="run-button">Run</button>
                 <button (click)="resetTextEditor()" id="reset-button">Reset</button>
@@ -31,7 +31,8 @@
             <div id="debugger">
                 <h2>Debugger</h2>
                 <!-- Placeholder for debugger content -->
-                <p>Debugger Output</p>
+                <!--  <p>Debugger Output</p> -->
+                <p id="console-content" [innerHTML]="debuggerContent" placeholder="Debugger Output"></p>
             </div>
         </div>
     </div>

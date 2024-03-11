@@ -49,29 +49,34 @@ export class FugueRuntimeService {
   // something like updateSource(str) that might reload the program and debugger state
   // then we can have: stepDebuggerTo(ip), testProgram(), resetProgram(), 
   
-  // this should eventually return [boolean, string]
-  // where the string is either an error or a json of the vm.....
-  loadProgram(src: string): [boolean, any] {
-    if (!this.wasmLoaded) return [false, undefined];
-    
-    // NOTE: we reset temporary storage every time we do a series
-    // of calls like this since there is no main loop to do it at
-    this.findExport('reset_temporary_storage')(this.jaiContext);
-    const jaiStr = this.toJaiString(src);
-    
-    this.findExport('load')(this.jaiContext, jaiStr, this.returnSpace);
-    if (this.copyJaiMemory(this.returnSpace, 8n).getBigInt64(0) === 0n) {
-        return [false, undefined];
-    }
-    
-    // this.findExport('run_main')(this.jaiContext, this.returnSpace);
-    // const output = this.toJsString(this.returnSpace);
-    
+  fugueState: any = undefined;
+  private updateFugueState() {
     this.findExport('get_fugue_state')(this.jaiContext, this.returnSpace);
-    const str   = this.toJsString(this.returnSpace);
-    const state = JSON.parse(str);
+    const str       = this.toJsString(this.returnSpace);
+    this.fugueState = JSON.parse(str);
+  }
+  
+  loadProgram(src: string): string {
+    if (!this.wasmLoaded) return 'ERROR: Could not load Fugue environment';
+    this.findExport('reset_temporary_storage')(this.jaiContext);
     
-    return [true, state];
+    const jaiStr = this.toJaiString(src);
+    this.findExport('load')(this.jaiContext, jaiStr, this.returnSpace);
+    const errorString = this.toJsString(this.returnSpace);
+    if (errorString !== '') return errorString;
+    // if (this.copyJaiMemory(this.returnSpace, 1n).getInt8(0) === 0) {
+    //     return 'TODO: return error info from jai code instead of just logging';
+    // }
+    
+    this.updateFugueState();
+    return '';
+  }
+  
+  stepProgram() {
+    this.findExport('reset_temporary_storage')(this.jaiContext);
+    this.findExport('step')(this.jaiContext);
+    this.updateFugueState();
+    console.log(this.fugueState);
   }
   
   // stinky wasm stuff below this point beware!
