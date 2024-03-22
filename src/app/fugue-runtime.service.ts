@@ -22,7 +22,8 @@ export class FugueRuntimeService {
             if (delta !== 0) return delta;
           }
           return 0;
-        }
+        },
+        current_time_seconds: () => window.performance.now() * 0.001
       }, {
         get(target: any, prop: any, receiver: any) {
           if (target.hasOwnProperty(prop)) return target[prop];
@@ -50,10 +51,19 @@ export class FugueRuntimeService {
   // then we can have: stepDebuggerTo(ip), testProgram(), resetProgram(), 
   
   fugueState: any = undefined;
-  private updateFugueState() {
+  private updateFugueState(): string {
     this.findExport('get_fugue_state')(this.jaiContext, this.returnSpace);
-    const str       = this.toJsString(this.returnSpace);
-    this.fugueState = JSON.parse(str);
+    const str = this.toJsString(this.returnSpace);
+    const old = this.fugueState;
+    try {
+        this.fugueState = JSON.parse(str);
+    } catch (e: any) {
+        this.fugueState = old;
+        console.log("Invalid json ", str);
+        return e.toString();
+    }
+    console.log(this.fugueState);
+    return '';
   }
   
   loadProgram(src: string): string {
@@ -64,11 +74,10 @@ export class FugueRuntimeService {
     this.findExport('load')(this.jaiContext, jaiStr, this.returnSpace);
     const errorString = this.toJsString(this.returnSpace);
     if (errorString !== '') return errorString;
-    // if (this.copyJaiMemory(this.returnSpace, 1n).getInt8(0) === 0) {
-    //     return 'TODO: return error info from jai code instead of just logging';
-    // }
     
-    this.updateFugueState();
+    const err = this.updateFugueState();
+    if (err !== '') return err;
+    
     return '';
   }
   
