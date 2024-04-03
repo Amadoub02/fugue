@@ -1,13 +1,13 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FugueRuntimeService } from '../fugue-runtime.service';
 import { JavaService } from './java.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+  styleUrls: ['./editor.component.css',]
 })
-export class EditorComponent {
+export class EditorComponent{
   userString: string = 'reckless: ';
   consoleContent: string = '';
   debuggerContent: string = '';

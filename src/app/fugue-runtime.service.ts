@@ -22,7 +22,8 @@ export class FugueRuntimeService {
             if (delta !== 0) return delta;
           }
           return 0;
-        }
+        },
+        current_time_seconds: () => window.performance.now() * 0.001
       }, {
         get(target: any, prop: any, receiver: any) {
           if (target.hasOwnProperty(prop)) return target[prop];
