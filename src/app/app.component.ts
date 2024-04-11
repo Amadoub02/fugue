@@ -6,6 +6,7 @@ import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { TutorialsComponent } from './tutorials/tutorials.component';
 
 @Component({
   selector: 'app-root',
@@ -26,10 +27,16 @@ export class AppComponent {
       }
     });
   }
+  isOpen: boolean = false;
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;
+  }
+}
 }
 
 @NgModule({
   declarations: [
+    TutorialsComponent,
     EditorComponent,
   ],
   imports: [

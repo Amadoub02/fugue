@@ -5,8 +5,8 @@ body {
     margin: 0;
     height: 100vh;
     padding: 0 32px;
-    background: black;
-    /*font-family: "Poppins";*/
+    background-color:black;
+=    /*font-family: "Poppins";*/
 }
 
 @media (width >= 500px){

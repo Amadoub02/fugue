@@ -25,7 +25,15 @@
         ></span
       >
       <span class="word"><a routerLink="/login">Signup/Login</a></span>
+      <span class="word"
+        ><a routerLink="/tutorials">Tutorials</a
+          ></span>
     </div>
+      <div class="wrapper">
+  <button (click)="toggleSidebar()">Toggle Sidebar</button>
+  <tutorials [isOpen]="isOpen"></tutorials>
+  <!-- Main content goes here -->
+</div>
   </header>
 </ng-container>
 <router-outlet></router-outlet>

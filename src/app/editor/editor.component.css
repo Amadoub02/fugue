@@ -93,7 +93,7 @@ button {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #333;
+    background-color: black;
     color: white;
 }
 
@@ -129,18 +129,18 @@ footer {
     display: inline-block;
     width: 100%;
     color:white;
-    background-color:black;
+    background-color:#333;
 }
 body{
-    background-color:black;
+    background-color:#333;
 }
 h2{
     color:white;
-    background-color:black;
+    background-color:#333;
     font-family:monospace;
 }
 textarea{
-    background-color:black;
+    background-color:#333;
     color:white;
 }
 p{
