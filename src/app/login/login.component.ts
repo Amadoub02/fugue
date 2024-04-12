@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit{
     if(formType === "login") {
       this.isLogin = true;
       this.router.navigate(['/editor']);
-    } else {
+    } else {  
       this.toggleForm();
     }
   }
