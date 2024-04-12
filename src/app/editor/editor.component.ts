@@ -50,13 +50,30 @@ export class EditorComponent{
     }
   }
   
+  // TODO: Clicking on the hyperlinks have to execute smth
+  private updateDebuggerContent() {
+    const fugueState = JSON.parse(JSON.stringify(this.fugue.fugueState));
+    let debuggerContentString = `<div>`;
+
+
+    for(const key in fugueState) {
+      if(Object.prototype.hasOwnProperty.call(fugueState, key)) {
+        const propertyValue = fugueState[key];
+        debuggerContentString += `<p class="DebuggerButtons"><a href="">${key}: ${propertyValue}</a></p>`;
+      }
+    }
+    debuggerContentString += `</div>`;
+    this.debuggerContent = debuggerContentString;
+  }
+  
   updateSource() {
-    this.fugue.loadProgram(this.editor.nativeElement.value);
-    
-    // const err = this.fugue.loadProgram(this.editor.nativeElement.value);
-    // if (err === '') this.updateDebuggerContent();
-    // else            this.debuggerContent = err;
-    
+    const err = this.fugue.loadProgram(this.editor.nativeElement.value);
+    if (err === '') {
+      this.updateDebuggerContent();
+    }
+    else   {
+      this.debuggerContent = err;
+    }         
     // const [ok, state] = this.fugue.loadProgram(this.editor.nativeElement.value);
     // if (ok) this.updateDebuggerContent();
     // else    this.debuggerContent = 'TODO: return error info from jai code instead of just logging';
