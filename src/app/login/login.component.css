@@ -1,4 +1,4 @@
-body {
+.body {
     display: grid;
     place-items: center;
     gap: 50px;
@@ -9,7 +9,7 @@ body {
 =    /*font-family: "Poppins";*/
 }
 
-@media (width >= 500px){
+@media (width >= 720px){
     body { 
         padding:0;
     }
@@ -70,7 +70,8 @@ body {
     overflow: hidden;
     position: relative;
     z-index: 3;
-    width: 94%;
+    width: 600px;
+    height: 500px;
     margin: 0 20px;
     padding: 170px 30px 54px;
     border-radius: 24px;

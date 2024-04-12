@@ -1,14 +1,14 @@
-body {
+.body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family:monospace;
+    tab-size: 4;
+    white-space: break-spaces;
     display: flex;
     flex-direction: column;
     height: 100vh;
-}
-
-* {
-    box-sizing: border-box;
+    background-color: black;
+    color: white;
 }
 
 #editor-container {
@@ -63,6 +63,8 @@ textarea {
     resize: none;
     font-size: 14px;
     line-height: 1.5;
+    background-color: black;
+    color: white;
 }
 
 button {
@@ -131,19 +133,27 @@ footer {
     color:white;
     background-color:#333;
 }
-body{
-    background-color:#333;
-}
-h2{
-    color:white;
-    background-color:#333;
-    font-family:monospace;
-}
+
 textarea{
     background-color:#333;
     color:white;
+
+h2{
+    font-family: monospace;
 }
-p{
+
+.nav-tabs .nav-link {
     color: white;
-    font-family:monospace
+
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #333;
+    border-color: #ccc #ccc black;
+}
+
+.tab-pane {
+    background-color: black;
+    color: white;
+    padding: 10px;
 }

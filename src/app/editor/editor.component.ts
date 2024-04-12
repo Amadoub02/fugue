@@ -1,16 +1,30 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FugueRuntimeService } from '../fugue-runtime.service';
 import { JavaService } from './java.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+  styleUrls: ['./editor.component.css',]
 })
-export class EditorComponent {
+export class EditorComponent{
   userString: string = 'reckless: ';
   consoleContent: string = '';
+  debuggerContent: string = '';
   editorContent: string = '';
+  
+  ngOnInit() {
+    this.fugue.fugueState.subscribe((state: any) => {
+      if (typeof(state) === 'string') {
+        /// update error message
+        this.debuggerContent = state;
+      } else {
+        // TODO: You guys have to make this look good and have all the stuff
+        const stateJson = JSON.parse(state);
+        this.debuggerContent = state;
+      }
+    });
+  }
 
   constructor(private javaService: JavaService, private fugue: FugueRuntimeService) {}
 
@@ -35,10 +49,25 @@ export class EditorComponent {
       }
     }
   }
+  
+  updateSource() {
+    this.fugue.loadProgram(this.editor.nativeElement.value);
+    
+    // const err = this.fugue.loadProgram(this.editor.nativeElement.value);
+    // if (err === '') this.updateDebuggerContent();
+    // else            this.debuggerContent = err;
+    
+    // const [ok, state] = this.fugue.loadProgram(this.editor.nativeElement.value);
+    // if (ok) this.updateDebuggerContent();
+    // else    this.debuggerContent = 'TODO: return error info from jai code instead of just logging';
+  }
 
   /* Prevents Tab from switching focus and appends the space to textarea */
   onKeydownTab(event:Event):void {
     if(event instanceof KeyboardEvent) {
+    // console.log('Editor input event triggered');
+    
+    
       if(event.key === 'Tab') {
         console.log('Tab keydown event triggered');
             event.preventDefault();
@@ -55,11 +84,6 @@ export class EditorComponent {
     this.consoleContent += content + '<br>';
   }
 
-  /* Just to manipulate text editor later */
-  onEditorInput() {
-    console.log('Editor input event triggered');
-  }
-
   /* Run Button */
   run() {
     this.appendContent(this.userString + 'run');
@@ -67,21 +91,11 @@ export class EditorComponent {
   }
 
   /* Runs the code from Text Editor on console */
-  runCode(): void{
-    console.log(this.editor);
-    const editorContent = this.editor.nativeElement.value;
-
-    /* As of right now, just to no overload the console */
-    if(editorContent.trim() !== ''){
-      const [ok, instructions, output] = this.fugue.loadProgram(editorContent);
-      if (ok) {
-        console.log("Loaded program");
-        console.log(instructions);
-        console.log(output);
-        this.appendContent(output);
-      } else {
-        throw new Error('TODO: error information');
-      }
+  // TODO: i think this button should be deprecated and repl
+  private finalOutput: string | undefined;
+  runCode(): void {
+    if (this.fugue.fugueState !== undefined) {
+      this.appendContent(this.finalOutput as string);
     }
   }
   
@@ -99,7 +113,8 @@ export class EditorComponent {
   resetTextEditor() {
     this.editor.nativeElement.value = '';
   }
-
+  
+  private lastCommand: string = '';
   private handleCommand(command: string){
     const commandArgs = command.split(' ');
     if(commandArgs.length > 2){
@@ -107,13 +122,19 @@ export class EditorComponent {
       return;
     }
     const cmd = commandArgs[0];
+    if (cmd !== '') this.lastCommand = command;
     switch(cmd) {
       case '':
         if(commandArgs.length > 1) {
           this.appendContent('Too many arguments >:(');
           break;
         }
-        this.toggleConsole();
+        
+        if (this.lastCommand !== '') {
+            this.handleCommand(this.lastCommand);
+            return;
+        }
+        
         break;
       case 'help':
         if(commandArgs.length > 1) {
@@ -134,8 +155,10 @@ export class EditorComponent {
           this.appendContent('Too many arguments >:(');
           break;
         }
-        this.appendContent('Running Fugue...');
         this.runCode();
+        break;
+      case 'step':
+        this.fugue.stepProgram();
         break;
       case 'save':
         const savedElements = this.editor.nativeElement.value;

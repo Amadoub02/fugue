@@ -1,15 +1,8 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <style></style>
-</head>
-<body>
+<div class="body">
     <div id="editor-container">
-        <div id="code-editor">
+        <div id="editor">
             <h2 id="text-editor-name">Text Editor</h2>
-            <textarea #editor (keydown)="onKeydownTab($event)" class="editor"></textarea>
+            <textarea #editor (keydown)="onKeydownTab($event)" (input)="updateSource()" class="editor"></textarea>
             <div>
                 <button (click)="run()" id="run-button">Run</button>
                 <button (click)="resetTextEditor()" id="reset-button">Reset</button>
@@ -25,19 +18,63 @@
                 </div>
                 <div class="horizontal-container">
                     <p id="username">reckless:</p>
-                    <p id="commandline-content" ><input id="commandline" type="text" placeholder="" (keydown.enter)="onKeydown($event)"></p>
+                    <p id="commandline-content"><input id="commandline" type="text" placeholder="" (keydown.enter)="onKeydown($event)"></p>
                 </div>
             </div>
-            <div id="debugger">
-                <h2>Debugger</h2>
-                <!-- Placeholder for debugger content -->
-                <p>Debugger Output</p>
+            <div id="debugger" class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#debugger-output">Output</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#debugger-log">Log</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab2-content">Tab 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab3-content">Tab 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab4-content">Tab 4</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="debugger-output" class="tab-pane fade show active">
+                        <h2>Debugger Output</h2>
+                        <p id="debugger-content" [innerHTML]="debuggerContent" placeholder="Debugger Output"></p>
+                    </div>
+                    <div id="debugger-log" class="tab-pane fade">
+                        <h2>Debugger Log</h2>
+                        <p id="debugger-content" [innerHTML]="debuggerContent" placeholder="Debugger Output"></p>
+                        <!-- <p>Debugger Log Content</p> -->
+                    </div>
+                    <div id="tab2-content" class="tab-pane fade">
+                        <h2>Tab 2 Content</h2>
+                        <!-- Content for Tab 2 -->
+                    </div>
+                    <div id="tab3-content" class="tab-pane fade">
+                        <h2>Tab 3 Content</h2>
+                        <!-- Content for Tab 3 -->
+                    </div>
+                    <div id="tab4-content" class="tab-pane fade">
+                        <h2>Tab 4 Content</h2>
+                        <!-- Content for Tab 4 -->
+                    </div>
+                </div>
             </div>
+            
         </div>
     </div>
     <footer>
         <p>© Fugue. All rights reserved.</p>
     </footer>
-</body>
-</html>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        $(document).ready(function(){
+       $('.nav-tabs a').click(function(){
+           $(this).tab('show');
+       });
+   });
+   </script>
+</div>
