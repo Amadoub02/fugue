@@ -12,6 +12,19 @@ export class EditorComponent{
   consoleContent: string = '';
   debuggerContent: string = '';
   editorContent: string = '';
+  
+  ngOnInit() {
+    this.fugue.fugueState.subscribe((state: any) => {
+      if (typeof(state) === 'string') {
+        /// update error message
+        this.debuggerContent = state;
+      } else {
+        // TODO: You guys have to make this look good and have all the stuff
+        const stateJson = JSON.parse(state);
+        this.debuggerContent = state;
+      }
+    });
+  }
 
   constructor(private javaService: JavaService, private fugue: FugueRuntimeService) {}
 
@@ -37,15 +50,13 @@ export class EditorComponent{
     }
   }
   
-  // TODO: You guys have to make this look good and have interactive buttons and stuff
-  private updateDebuggerContent() {
-    this.debuggerContent = JSON.stringify(this.fugue.fugueState);
-  }
-  
   updateSource() {
-    const err = this.fugue.loadProgram(this.editor.nativeElement.value);
-    if (err === '') this.updateDebuggerContent();
-    else            this.debuggerContent = err;
+    this.fugue.loadProgram(this.editor.nativeElement.value);
+    
+    // const err = this.fugue.loadProgram(this.editor.nativeElement.value);
+    // if (err === '') this.updateDebuggerContent();
+    // else            this.debuggerContent = err;
+    
     // const [ok, state] = this.fugue.loadProgram(this.editor.nativeElement.value);
     // if (ok) this.updateDebuggerContent();
     // else    this.debuggerContent = 'TODO: return error info from jai code instead of just logging';
@@ -81,8 +92,11 @@ export class EditorComponent{
 
   /* Runs the code from Text Editor on console */
   // TODO: i think this button should be deprecated and repl
+  private finalOutput: string | undefined;
   runCode(): void {
-    if (this.fugue.fugueState !== undefined) this.appendContent(this.fugue.fugueState.final_output);
+    if (this.fugue.fugueState !== undefined) {
+      this.appendContent(this.finalOutput as string);
+    }
   }
   
 
@@ -145,7 +159,6 @@ export class EditorComponent{
         break;
       case 'step':
         this.fugue.stepProgram();
-        this.updateDebuggerContent();
         break;
       case 'save':
         const savedElements = this.editor.nativeElement.value;
