@@ -32,11 +32,10 @@ export class AppComponent {
     this.isOpen = !this.isOpen;
   }
 }
-}
+
 
 @NgModule({
   declarations: [
-    TutorialsComponent,
     EditorComponent,
   ],
   imports: [
