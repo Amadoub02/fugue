@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    background-color: blue;
+    background-color: darkblue;
     padding: 20px;
     text-align: left; /* Align text to the left */
     display: flex;
@@ -53,11 +53,11 @@ a {
     z-index: 1; /* Bring the word to the front to cover the space */
 }
 html{
-    background-color:black;
+    background-color:dimgrey;
 }
 html, body {
     height: 100%;
-    background-color: black;
+    background-color: dimgrey;
     color: white; /* Set text color to white */
     font-family: Arial, sans-serif;
 }

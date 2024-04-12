@@ -95,7 +95,7 @@ button {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #333;
+    background-color: black;
     color: white;
 }
 
@@ -131,8 +131,12 @@ footer {
     display: inline-block;
     width: 100%;
     color:white;
-    background-color:black;
+    background-color:#333;
 }
+
+textarea{
+    background-color:#333;
+    color:white;
 
 h2{
     font-family: monospace;
@@ -140,6 +144,7 @@ h2{
 
 .nav-tabs .nav-link {
     color: white;
+
 }
 
 .nav-tabs .nav-link.active {
