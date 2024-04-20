@@ -1,23 +1,63 @@
-.body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: black;
-    color: white;
+/* tutorials.component.css */
+
+/* Set overall background color to grey */
+body {
+  background-color: #ccc; /* Grey */
 }
 
-.lessons {
-    border: 2px solid white;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+/* Style for the sidebar */
+.sidebar {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: darkblue; /* Dark blue */
+  padding: 10px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
-.lessons:hover {
-    background-color: white;
-    color: black; /* Change text color on hover */
+.sidebar.open {
+  transform: translateX(0);
 }
+
+/* Adjust content area to leave space for the sidebar */
+.content {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 250px; /* Adjust according to sidebar width */
+  background-color: white; /* Set content background color */
+}
+
+/* Style for sidebar links */
+.sidebar ul {
+  list-style: none; /* Remove bullets */
+  padding: 0;
+  margin: 0; /* Remove default margin */
+  height: 100%; /* Occupy full height of the sidebar */
+  display: flex; /* Use flexbox to evenly distribute links */
+  flex-direction: column; /* Arrange links vertically */
+  justify-content: space-around; /* Space links evenly */
+}
+
+.sidebar ul li {
+  text-align: center; /* Center align links */
+}
+
+.sidebar ul li a {
+  color: white; /* Set link color to white */
+  text-decoration: none; /* Remove underline */
+  display: block; /* Make links block-level elements */
+  border-bottom: 1px solid white; /* Add white line divider */
+  padding: 5px 0; /* Add padding to separate link from line */
+  font-family: monospace; /* Set font to monospace */
+}
+
+.sidebar ul li:last-child a {
+  border-bottom: none; /* Remove divider from last link */
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
