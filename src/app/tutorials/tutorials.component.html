@@ -1,11 +1,21 @@
-<div class="content">
-    <div class="lessons">
-        <a ref="">Fugue tutorial</a>
-    </div>
-    <div class="lessons">
-        <a ref="/">Memory Management</a>
-    </div>
-    <div class="lessons">
-        <a ref="/">Assembly</a>
-    </div>
+<!-- tutorials.component.html -->
+
+<div class="sidebar" [class.open]="isSidebarOpen">
+    <button (click)="toggleSidebar()">Toggle Sidebar</button>
+    <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
+        <li><a href="#">Link 5</a></li>
+        <li><a href="#">Link 6</a></li>
+        <li><a href="#">Link 7</a></li>
+        <li><a href="#">Link 8</a></li>
+    </ul>
 </div>
+<button class="toggle-btn" (click)="toggleSidebar()">Toggle Sidebar</button>
+<div class="content" [class.shrunk]="isSidebarOpen">
+    <p>Your main content here</p>
+</div>
+
+ 
