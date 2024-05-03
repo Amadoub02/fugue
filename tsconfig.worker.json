@@ -2,9 +2,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target":"es2018",
     "outDir": "./out-tsc/worker",
     "lib": [
-      "es2018",
+      "es2020",
       "webworker"
     ],
     "types": []

@@ -21,9 +21,11 @@
     "@angular/platform-server": "^17.1.0",
     "@angular/router": "^17.1.0",
     "@angular/ssr": "^17.1.1",
+    "@auth0/auth0-angular": "^2.2.3",
     "@mui/icons-material": "^5.15.7",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
+    "subworkers": "^1.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
