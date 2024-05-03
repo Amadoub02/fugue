@@ -202,6 +202,13 @@ export class EditorComponent{
     this.consoleContent = '';
   }
 
+  activeTab: string = 'debugger-output';
+
+  
+  switchTab(tabId: string) {
+    this.activeTab = tabId;
+  }
+
   /* FOR TESTING ONLY: runs java at endpoint for testing only */
   async runJava() {
     const editorContent = this.editor.nativeElement.value;
