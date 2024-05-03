@@ -1,19 +1,17 @@
-h1 {
+html, body {
+    height: 100%; /* Ensures the body takes full height of the viewport */
     margin: 0;
+    padding: 0;
+    background-color: black; /* or any other color you prefer */
 }
 
 section {
-    background-color:#333;
+    background-color: #333;
+    color: white;
     padding: 20px;
-    padding-top:250px;
     text-align: center;
-    height:100%;
-    padding-bottom: 550px; /* Add bottom padding */
-}
-.description{
-    color:white;
-    background-color:#333;
-    font-family: monospace
+    box-sizing: border-box; /* Includes padding in height calculation */
+    min-height: calc(100vh - 120px); /* 100vh is full viewport height, adjust 120px depending on your footer and header height */
 }
 
 footer {
@@ -24,39 +22,43 @@ footer {
     bottom: 0;
     position: fixed;
     width: 100%;
+    height: 50px; /* Specify footer height if not already defined */
+}
+
+h1 {
+    margin: 0;
+}
+
+.description {
+    color: white;
+    background-color: #333;
+    font-family: monospace;
+    font-size: 60px; /* Adjust this value to increase or decrease the text size */
 }
 
 .half-page-image {
     background-color: #333;
     text-align: center;
     overflow: hidden;
-    position: relative; /* Ensure relative positioning for the half-page image */
-    z-index: 0; /* Set a lower z-index to appear behind the header */
-    width: 50%; /* Set width to cover the left half of the page */
-    float: left; /* Float left to allow other content to flow around it */
-    overflow: hidden;
-}
-.full-width {
-  height: 100%;
-  width: 100%;
-  transition: transform 0.5s ease; /* Smooth transition for rotation */
+    width: 100%; /* Adjusted to full width if needed */
+    height: 50vh; /* Example for half-page height */
+    position: relative;
+    z-index: 0;
 }
 
-/* Keyframes for rotation */
-@keyframes continuousRotate {
+.full-width {
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease;
+    animation: continuousRotate 20s linear infinite; /* Slower rotation over 20 seconds */
+  }
+  
+  @keyframes continuousRotate {
     from {
-        transform: rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg);
+      transform: rotate(360deg);
     }
-}
-
-.half-page-image:hover .full-width {
-    /* Apply the continuous rotation animation */
-    animation: continuousRotate .5s linear infinite;
-}
-html{
-    background-color:black;
-}
-
+  }
+  
