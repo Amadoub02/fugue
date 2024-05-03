@@ -171,3 +171,7 @@ h2 {
     background-color: white;
     color: black;
 }
+
+#editor {
+    width: 45%;
+}
