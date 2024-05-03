@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './tutorials.component.css'
 })
 export class TutorialsComponent {
-isSidebarOpen = true;
+isSidebarOpen = false;
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;

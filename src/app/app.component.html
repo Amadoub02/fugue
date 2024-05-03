@@ -24,15 +24,16 @@
           >Text Editor</a
         ></span
       >
-      <span class="word">
-        <a routerLink="/login"
-        >Signup/Login</a></span>
       <span class="word"
         ><a routerLink="/tutorials"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         >Tutorials</a
           ></span>
+      <span class="word"
+        ><button class="btn btn-primary btn-block" (click)="loginWithRedirect()">
+          Log in
+        </button></span>
     </div>
       <div class="wrapper">
         <!-- Main content goes here -->

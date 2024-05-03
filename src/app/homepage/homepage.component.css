@@ -60,3 +60,20 @@ html{
     background-color:black;
 }
 
+.img{
+    max-height: 120px;
+}
+
+.image1{
+    float: left;
+    padding: 0 10px;
+}
+
+.image2{
+   float: left;
+   padding: 0 10px;
+}
+
+.image3{
+    padding: 0 10px;
+}
