@@ -5,17 +5,15 @@
     margin: 0;
     height: 100vh;
     padding: 0 32px;
-    background-color:black;
-    /*font-family: "Poppins";*/
+    background-color: black;
 }
 
-@media (width >= 720px){
-    body { 
-        padding:0;
+@media (min-width: 720px) {
+    .body {
+        padding: 0;
     }
     .card {
-        margin: 0;
-        width: 360px;
+        width: 360px; /* Adjust width as needed for larger screens */
     }
 }
 
@@ -30,168 +28,104 @@
     transition: .7s ease all;
 }
 
-.background-left {
-    top: -50vmin;
-    left: -50vmin;
-}
-
-.background-right {
-    content: "";
-    top: -50vmin;
-    left: 100vmin;
-
-}
-
-.background::after {
-    content: "";
-    position: inherit;
-    right: -50vmin;
-    bottom: -55vmin;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    background: blue;
-    transition: .7s ease all;
-}
-
-.background-left::after {
-    content: "";
-    right: -50vmin;
-    bottom: -55vmin;
-}
-
-.background-right::after {
-    content: "";
-    bottom: -55vmin;
-    right: 100vmin;
-}
-
 .card {
     overflow: hidden;
     position: relative;
     z-index: 3;
-    width: 600px;
-    height: 500px;
+    width: 600px; /* Increased width for better layout */
+    height: 450px; /* Adjust height based on content */
     margin: 0 20px;
-    padding: 170px 30px 54px;
+    padding: 20px; /* Reduced padding for more space */
     border-radius: 24px;
-    background: black;
+    background: #121212; /* Darker background for better contrast */
     text-align: center;
-    box-shadow: 0 100px 100px rgb(0 0 0/10%);
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: -880px;
-    left: 50%;
-    translate: -50% 0;
-    width: 1000px;
-    height: 1000px;
-    border-radius: 50%;
-    background: blue;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .card .logo {
     position: absolute;
-    top: 30px;
+    top: 15px; /* Adjust top position */
     left: 50%;
-    translate: -50% 0;
+    transform: translateX(-50%);
     width: 64px;
     height: 64px;
 }
 
 .card > h2 {
-    font-size: 22px;
-    font-weight: 400;
-    margin: 0 0 38px;
-    color: rgba(255, 255, 255, 0.38);
+    font-size: 24px; /* Slightly larger font size */
+    color: white; /* Better visibility on dark background */
+    margin-bottom: 20px; /* Spacing between elements */
 }
 
 .login-container {
-    margin: 0 0 44px;
     display: grid;
-    gap: 12px;
-}
-
-.login-container:is(input,button){
-    width: 100%;
-    height: 100%;
-    border-radius: 28px;
-    font-size: 16px;
-    font-family: inherit;
+    gap: 15px; /* Increased gap for better spacing */
 }
 
 .login-container > input {
-    border: 0;
+    height: 48px; /* Increased height for better accessibility */
     padding: 0 24px;
-    color: #222222;
+    font-size: 16px; /* Larger font size for readability */
+    border-radius: 8px; /* Rounded corners */
+    border: 2px solid #555; /* Subtle border */
     background: #ededed;
+    color: #333;
 }
 
-.login-container > input::placeholder{
-    color: rgb(0 0 0 / 28%);
+.login-container > input:focus {
+    border-color: #226ce7; /* Highlight on focus */
+    outline: none; /* Remove default focus outline */
 }
 
 .login-container > button {
-    border: 0;
-    color: #f9f9f9;
+    height: 48px; /* Uniform button height with input fields */
     background-color: #226ce7;
-    display: grid;
-    place-items: center;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.login-container > button {
-    border: 0;
-    color: #f9f9f9;
-    background: #226ce7;
-    display: grid;
-    place-items: center;
-    font-weight: 500;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
 }
 
 .card > footer {
     color: #a1a1a1;
-}
-
-.card > footer > a {
-    color: #216ce7;
+    margin-top: 20px; /* Spacing after the last element */
 }
 
 .switchButton[type="checkbox"] {
-    -webkit-appearance: none;
+    -webkit-appearance: none; /* Removes default system appearance */
+    margin: 10px;
+    width: 60px; /* Width of the slider */
+    height: 34px; /* Height of the slider */
+    background-color: #ccc; /* Background color when off */
+    border-radius: 34px; /* Circular edges */
     position: relative;
-    background-color: #f1f1f1;
-    width: 120px;
-    height: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: background-color 0.2s; /* Smooth transition for background color */
 }
 
 .switchButton[type="checkbox"]::before {
-    content: "";
+    content: ""; /* Necessary for the slider knob */
     position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 0;
-    background-color: #303030;
-    border-radius: 20px;
-    transform: scale(1.1);
-    transition: .7s ease all;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    top: 2px; /* Slightly smaller than the slider height to fit within the boundary */
+    left: 2px; /* Start from the left-most edge */
+    width: 30px; /* Diameter of the slider knob */
+    height: 30px; /* Same as the width */
+    background-color: white; /* Color of the knob */
+    border-radius: 50%; /* Perfect circle */
+    transition: transform 0.2s; /* Smooth transition for moving the knob */
+}
+
+.switchButton:checked[type="checkbox"] {
+    background-color: darkblue; 
 }
 
 .switchButton:checked[type="checkbox"]::before {
-    background-color:  darkgray;
-    left: 82px;
+    transform: translateX(26px); /* Move the knob to the right when checked */
 }
 
-.switch-button-container {
-    padding-top: 10px;
+/* Optional: Adding a focus style for accessibility */
+.switchButton[type="checkbox"]:focus {
+    box-shadow: 0 0 1px 2px #fff, 0 0 0 5px #333; /* Outer glow to indicate focus */
 }
-h2{
-    color: white;
-}
+
