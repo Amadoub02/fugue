@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit{
       this.toggleButtonText = 'Already have an account? Click the switch to Sign in'
 ;    }
   }
+
+ goBack() {
+    window.history.back();
+}
 }
