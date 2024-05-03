@@ -145,18 +145,21 @@ h2 {
 
 .nav-tabs .nav-link {
     color: white;
+    cursor: pointer;
 
 }
 
 .nav-tabs .nav-link.active {
     background-color: #333;
     border-color: #ccc #ccc black;
+    cursor: pointer;
 }
 
 .tab-pane {
     background-color: black;
     color: white;
     padding: 10px;
+    cursor: pointer;
 }
 
 .DebuggerButtons {
