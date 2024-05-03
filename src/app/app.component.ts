@@ -5,12 +5,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd, Event, Route
 import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SharedModule, RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule, FormsModule, LoginComponent],
+  imports: [SharedModule, RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
